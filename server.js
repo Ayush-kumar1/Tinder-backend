@@ -1,10 +1,13 @@
+import dotenv from 'dotenv';
+
+dotenv.config();
 import express from 'express';
 import mongoose from 'mongoose';
 import Cards from '../tinder-backend/dbCards.js'
 import Cors from 'cors';
 
 // password- 5ONx1m2ZK2hNn3Xf
-const dbURL = `mongodb+srv://admin:5ONx1m2ZK2hNn3Xf@cluster0.yszxi.mongodb.net/tinderDB?retryWrites=true&w=majority`
+// const dbURL = ``
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -12,7 +15,7 @@ const port = process.env.PORT || 5000;
 app.use(express.json())
 app.use(Cors())
 
-mongoose.connect(dbURL, {
+mongoose.connect(process.env.dbURL, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true
